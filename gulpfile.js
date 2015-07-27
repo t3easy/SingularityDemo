@@ -3,25 +3,33 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 
-var settings = {};
-var paths = {};
-
-paths.sass = './sass/**/*.scss';
-paths.css = './css';
+var settings = {
+	paths: {
+		sass: './sass/**/*.scss',
+		css: './css'
+	},
+	sass: {
+		outputStyle: 'compressed',
+		includePaths: [
+			'./node_modules/breakpoint-sass/stylesheets',
+			'./node_modules/singularitygs/stylesheets'
+		]
+	}
+};
 
 gulp.task('sass', function () {
 	gulp.src(paths.sass)
-		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest(paths.css));
+		.pipe(sass(settings.paths.sass).on('error', sass.logError))
+		.pipe(gulp.dest(settings.paths.css));
 });
 
 gulp.task('sass:watch', function () {
-	gulp.watch(paths.sass, ['sass']);
+	gulp.watch(settings.paths.sass, ['sass']);
 });
 
 gulp.task('copy', function () {
 	gulp.src('./node_modules/normalize.css/normalize.css')
-		.pipe(gulp.dest('./css'));
+		.pipe(gulp.dest(settings.paths.css));
 });
 
 gulp.task('default', ['sass', 'copy']);
