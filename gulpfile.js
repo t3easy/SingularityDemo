@@ -18,3 +18,10 @@ gulp.task('sass', function () {
 gulp.task('sass:watch', function () {
 	gulp.watch(paths.sass, ['sass']);
 });
+
+gulp.task('copy', function () {
+	gulp.src('./node_modules/normalize.css/normalize.css')
+		.pipe(gulp.dest('./css'));
+});
+
+gulp.task('default', ['sass', 'copy']);
