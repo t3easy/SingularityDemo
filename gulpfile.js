@@ -18,8 +18,8 @@ var settings = {
 };
 
 gulp.task('sass', function () {
-	gulp.src(paths.sass)
-		.pipe(sass(settings.paths.sass).on('error', sass.logError))
+	gulp.src(settings.paths.sass)
+		.pipe(sass(settings.sass).on('error', sass.logError))
 		.pipe(gulp.dest(settings.paths.css));
 });
 
