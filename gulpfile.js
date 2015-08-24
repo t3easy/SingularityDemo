@@ -9,7 +9,7 @@ var settings = {
 		css: './css'
 	},
 	sass: {
-		outputStyle: 'compressed',
+		outputStyle: 'nested', // nested, expanded, compact, compressed
 		includePaths: [
 			'./node_modules/breakpoint-sass/stylesheets',
 			'./node_modules/singularitygs/stylesheets'
